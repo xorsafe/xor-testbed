@@ -1,0 +1,57 @@
+<div class="overflow-hidden bg-white shadow h-full">
+  <ul role="list" class="divide-y divide-gray-200">
+    <li class="px-4 py-4 sm:px-6 border-b border-b-gray-100 flex justify-between items-center"
+      *ngFor="let test of tests;let i = index;" [ngClass]="{
+      'bg-blue-700':test===selected,
+      'bg-white':test!==selected
+    }"
+    (click)="testbedChanged.emit(test)"
+    >
+      <div>
+        <h3 class="text-md my-1 text-black" [class.text-white]="test===selected">{{test.model.name}}</h3>
+        <h4 class="text-sm py-1 font-light text-gray-100" [class.text-gray-500]="test!==selected">
+          {{test.model.description}}</h4>
+      </div>
+      <span class="tex-black hover:cursor-pointer hover:bg-blue-900/20 transition-colors rounded-full p-2"
+        [class.text-white]="test===selected" [cdkMenuTriggerFor]="menu"
+        (cdkMenuOpened)="currentMenuOpenedForTestbed = test.model">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+          class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z" />
+        </svg>
+
+      </span>
+    </li>
+  </ul>
+</div>
+
+<ng-template #menu>
+
+  <div class="inline-flex flex-col min-w-48 max-w-72 bg-gray-50 py-0 px-0 shadow-md rounded-md transition duration-200"
+    cdkMenu #caseStudiesMenu="cdkMenu">
+    <div cdkMenuGroup class="w-full border-b border-b-gray-200">
+      <button *ngFor="let theme of currentMenuOpenedForTestbed.themesSupported;let index = index" cdkMenuItemRadio
+        class="w-full relative cursor-pointer border-none bg-transparent select-none min-w-16 leading-9 py-0 px-4 flex items-center flex-1 text-black hover:text-white hover:bg-blue-700 active:bg-blue-900 "
+        [cdkMenuItemChecked]="currentMenuOpenedForTestbed.currentTheme === theme"
+        (cdkMenuItemTriggered)="themeChangedForTestbed.emit({testbed:currentMenuOpenedForTestbed,index})">
+        {{theme}}
+        <svg *ngIf="currentMenuOpenedForTestbed.currentTheme === theme" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 absolute right-2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+        </svg> 
+      </button>
+    </div>
+    <div cdkMenuGroup class="w-full border-b border-b-gray-200">
+      <button *ngFor="let caseStudy of currentMenuOpenedForTestbed.caseStudies;let index = index"
+        class="w-full relative cursor-pointer border-none bg-transparent select-none min-w-16 leading-9 py-0 px-4 flex items-center flex-1 text-black hover:text-white hover:bg-blue-700 active:bg-blue-900"
+        [cdkMenuItemChecked]="currentMenuOpenedForTestbed.selectedCaseStudy === caseStudy"
+        (cdkMenuItemTriggered)="caseChangedForTestbed.emit({testbed:currentMenuOpenedForTestbed,index})"
+        cdkMenuItemRadio>{{caseStudy.name}}
+        <svg *ngIf="currentMenuOpenedForTestbed.selectedCaseStudy === caseStudy" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 absolute right-2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+        </svg>        
+      </button>
+    </div>
+    <div class="w-full cursor-pointer border-none bg-transparent select-none min-w-16 leading-9 py-0 px-4 flex items-center flex-1 text-black hover:text-white hover:bg-blue-700 active:bg-blue-900">About</div>
+  </div>
+</ng-template>

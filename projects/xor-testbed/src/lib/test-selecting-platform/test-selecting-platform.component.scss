@@ -1,0 +1,11 @@
+mat-drawer {
+    width: 400px;
+}
+
+.mat-drawer-side {
+    border-right-width: 0;
+    &.mat-drawer-end{
+        border-left-width: 0;
+        width: 600px;
+    }
+}
