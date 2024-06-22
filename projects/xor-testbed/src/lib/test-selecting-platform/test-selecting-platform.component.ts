@@ -1,7 +1,6 @@
 import { AfterViewInit, Component, ComponentRef, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
-import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { TestbedModel} from '../testbed/testbed-model';
@@ -10,18 +9,11 @@ import { exampleSandboxTest } from '../testbed/testbed.component';
 import { CdkPortalOutlet, ComponentPortal, ComponentType, PortalModule, } from '@angular/cdk/portal'
 import { ICaseStudyChangeEvent, IThemeChangeEvent, TestSelectionListComponent } from '../test-selection-list/test-selection-list.component';
 import { TestDataEditorComponent } from '../test-data-editor/test-data-editor.component';
-import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
-import { BrowserModule } from '@angular/platform-browser';
-import {MatCardModule} from '@angular/material/card';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import { FormControl } from '@angular/forms';
-import {MatExpansionModule} from '@angular/material/expansion';
 
 @Component({
   selector: 'app-test-selecting-platform',
   standalone: true,
-  providers: [provideAnimations()],
-  imports: [CommonModule, TestSelectionListComponent, TestDataEditorComponent, PortalModule, MatSidenavModule, MatFormFieldModule, MatSelectModule, MatButtonModule, MatCardModule,MatDatepickerModule,MatExpansionModule],
+  imports: [CommonModule, TestSelectionListComponent, TestDataEditorComponent, PortalModule, MatSidenavModule, MatFormFieldModule, MatSelectModule],
   templateUrl: './test-selecting-platform.component.html',
   styleUrl: './test-selecting-platform.component.scss',
 })
@@ -32,16 +24,11 @@ export class TestSelectingPlatformComponent implements OnInit, OnChanges, AfterV
   ];
 
 
-  readonly panelOpenState = signal(false);
-
-
   testData!:any;
   currentTest!: ISandboxTest;
   private componentRef!: ComponentRef<AbstractTestbed>;
   @ViewChild(CdkPortalOutlet) selectedPortalOutlet!: CdkPortalOutlet;
   selectedPortal!: ComponentPortal<AbstractTestbed>;
-  // @ViewChild("drawer") drawer!: ElementRef<MatDrawer>;
-  @ViewChild("drawer") drawer!: any;
 
   ngOnInit(): void {
     this.currentTest = this.tests[0];
@@ -62,7 +49,6 @@ export class TestSelectingPlatformComponent implements OnInit, OnChanges, AfterV
   }
 
   print(message:string){
-    // this.drawer.open();
     console.log(message);
   }
 

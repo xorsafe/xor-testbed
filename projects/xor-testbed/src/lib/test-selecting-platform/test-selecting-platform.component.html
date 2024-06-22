@@ -17,7 +17,7 @@
 
         <button type="button" title="Toggle Menu"
             class="rounded-full absolute bottom-4 left-4 hover:bg-gray-100 p-4 transition"
-            (click)="print('working');drawer.toggle()">
+            (click)="drawer.toggle()">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -36,29 +36,6 @@
 
 
         </button>
-        <button mat-button>Click Me</button>
-        <mat-card appearance="outlined">
-            <mat-card-content>Simple card</mat-card-content>
-        </mat-card>
 
-        <mat-accordion>
-            <mat-expansion-panel hideToggle>
-                <mat-expansion-panel-header>
-                    <mat-panel-title> This is the expansion title </mat-panel-title>
-                    <mat-panel-description> This is a summary of the content </mat-panel-description>
-                </mat-expansion-panel-header>
-                <p>This is the primary content of the panel.</p>
-            </mat-expansion-panel>
-            <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
-                <mat-expansion-panel-header>
-                    <mat-panel-title> Self aware panel </mat-panel-title>
-                    <mat-panel-description>
-                        Currently I am {{panelOpenState() ? 'open' : 'closed'}}
-                    </mat-panel-description>
-                </mat-expansion-panel-header>
-                <p>I'm visible because I am open</p>
-            </mat-expansion-panel>
-        </mat-accordion>
-        
     </mat-drawer-content>
 </mat-drawer-container>
