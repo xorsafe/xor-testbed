@@ -1,12 +1,19 @@
 # Angular Testbed
 Testing reactive angular components in a standalone environrnment has always been a problem. This library provides a neat component that can be placed in its own route inside the application and it provides a platform for setting up frontend tests with different data points for the same code.
 
+![Testbed Preview](testbed-preview.gif)
+
 ## Sandbox testing in your own source
 xor-testbed provides simple components and patterns to create a sandbox based testing environment in your angular(v2+) app. It keeps the integration layer thin and separate and provides a dedicated view for managing all your sandboxes. The testbed is minimal and runs in your angular app where you give it a special route as shown below. You can make changes to the data model within the testbed and copy the configuration model which can be pasted in place where the test was written making incremental testing both easier and mutable.
 
 ## Integration
 
 Even though the initial setup may seem a bit extended here, progressive iterations are much easier. You should only require to create a main testbed class and a testing class with minor updates to the list and models wherever necessary.
+
+### Installation
+```
+npm install xor-testbed
+```
 
 ### Add angular material with animations enabled
 This library depends on angular material so add it as described [here](https://material.angular.io/guide/getting-started)
