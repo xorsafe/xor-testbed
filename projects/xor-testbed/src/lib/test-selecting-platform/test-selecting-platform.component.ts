@@ -11,7 +11,7 @@ import { ICaseStudyChangeEvent, IThemeChangeEvent, TestSelectionListComponent } 
 import { TestDataEditorComponent } from '../test-data-editor/test-data-editor.component';
 
 @Component({
-  selector: 'app-test-selecting-platform',
+  selector: 'xor-test-selecting-platform',
   standalone: true,
   imports: [CommonModule, TestSelectionListComponent, TestDataEditorComponent, PortalModule, MatSidenavModule, MatFormFieldModule, MatSelectModule],
   templateUrl: './test-selecting-platform.component.html',

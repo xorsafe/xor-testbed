@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractTestbed, provideComponentsForTesting, wrapWithTestbedCode } from './abstract-testbed';
+import { AbstractTestbed, provideComponentsForTesting } from './abstract-testbed';
 import { TestbedModel } from './testbed-model';
 import { ISandboxTest } from '../test-selecting-platform/test-selecting-platform.component';
 

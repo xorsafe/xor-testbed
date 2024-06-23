@@ -71,45 +71,6 @@ export abstract class AbstractTestbed implements OnInit {
 	}
 }
 
-
-/**
- * Creates a testbed with a functional context menu to visually test the html scenario
- * @param htmlCodeToTest Code that needs to be tested. This could be one component or a partial integration
- * @deprecated Use the full template raw instead
- * @returns void
- */
-export function wrapWithTestbedCode(htmlCodeToTest: string) {
-	return `
-	<div class="w-full h-full inline-grid" [cdkContextMenuTriggerFor]="testbedMenu">
-		${htmlCodeToTest}
-		<ng-template #testbedMenu>
-			<div class="inline-flex flex-col min-w-full max-w-lg rounded-md bg-slate-100 text-black drop-shadow-lg" cdkMenu>
-				<button (click)="openAboutDialog()" class="cursor-pointer hover:bg-blue-600 hover:text-white px-8 py-2 flex flex-row items-center flex-1 select-none min-w-min" cdkMenuItem>About</button>
-				<hr class="border-gray-300"/>
-				<button cdkMenuItemRadio [cdkMenuItemChecked]="theme==='light'" (cdkMenuItemTriggered)="theme='light'" class="cursor-pointer aria-checked:bg-slate-400 hover:bg-blue-600 hover:text-white px-8 py-2 flex flex-row items-center flex-1 select-none min-w-min" cdkMenuItem>Light</button>
-				<button cdkMenuItemRadio [cdkMenuItemChecked]="theme==='dark'" (cdkMenuItemTriggered)="theme='dark'" class="cursor-pointer aria-checked:bg-slate-400 hover:bg-blue-600 hover:text-white px-8 py-2 flex flex-row items-center flex-1 select-none min-w-min" cdkMenuItem>Dark</button>
-				<hr class="border-gray-300"/>
-				<button class="cursor-pointer hover:bg-blue-600 hover:text-white px-8 py-2 flex flex-row items-center flex-1 select-none min-w-min" cdkMenuItem [cdkMenuTriggerFor]="cases">Cases <span class="relative left-4">&#10148;</span></button>
-			</div>
-		</ng-template>
-		<ng-template #cases>
-			<div class="inline-flex flex-col min-w-full max-w-lg bg-slate-100 text-black drop-shadow-lg" cdkMenu>
-				
-				<button *ngFor="let caseStudy of listedCaseStudies;let i = index" 
-					cdkMenuItem
-					(cdkMenuItemTriggered)="null"
-					class="cursor-pointer hover:bg-blue-600 hover:text-white px-8 py-2 flex flex-row items-center flex-1 select-none min-w-min">{{caseStudy.name}}</button>
-				
-				<button 
-					(cdkMenuItemTriggered)="resetBackToBaseCase()"
-					class="cursor-pointer hover:bg-blue-600 hover:text-white px-8 py-2 flex flex-row items-center flex-1 select-none min-w-min" cdkMenuItem>Base case</button>
-				<hr class="border-gray-300"/>
-			</div>
-		</ng-template>
-	</div>	
-	`;
-}
-
 /** Creates a deep copy of the supplied object */
 export function deepCopy<T>(obj: T): T {
 	if (obj === null || typeof obj !== 'object') {
