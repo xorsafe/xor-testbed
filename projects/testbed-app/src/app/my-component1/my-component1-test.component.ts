@@ -36,5 +36,27 @@ testbedModel.caseStudies = [
       underline: false,
       message: 'This text is stylable'
     }
+  },
+  {
+    name: "Bold",
+    description: "Only bold text",
+    data: {
+      bold: true,
+      italic: false,
+      strikethrough: false,
+      underline: false,
+      message: "This text is stylable"
+    }
+  },
+  {
+    name: "Italic",
+    description: "Only italic text",
+    data: {
+      bold: false,
+      italic: true,
+      strikethrough: false,
+      underline: false,
+      message: "This text is stylable"
+    }
   }
 ]

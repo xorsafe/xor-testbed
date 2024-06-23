@@ -34,5 +34,32 @@ testbedModel.caseStudies = [
       backgroundColor: 'white',
       message: 'This label is highlightable'
     }
+  },
+  {
+    name: "Yellow on black",
+    description: "Yellow text, black background",
+    data: {
+      textColor: "yellow",
+      backgroundColor: "black",
+      message: "This label is highlightable"
+    }
+  },
+  {
+    name: "Red on white",
+    description: "Red text, white background",
+    data: {
+      textColor: "red",
+      backgroundColor: "white",
+      message: "This label is highlightable"
+    }
+  },
+  {
+    name: "rgb values",
+    description: "Testing rgb values set to properties",
+    data: {
+      textColor: "rgb(213,53,123)",
+      backgroundColor: "rgb(43,123,212)",
+      message: "This label is highlightable"
+    }
   }
 ]
